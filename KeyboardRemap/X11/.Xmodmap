@@ -1,0 +1,20 @@
+! Key remaps for Belgian AZERTY keyboard (X11)
+!
+! Equivalent of the Windows AutoHotkey script.
+! See the keycode table with: xmodmap -pke
+!
+! Format: keycode XX = normal Shift Mode_switch Mode_switch+Shift ISO_Level3(AltGr) ISO_Level3+Shift
+!
+! On modern X11, AltGr = ISO_Level3_Shift, which maps to column 5 (not column 3).
+!
+! Load:   xmodmap ~/.Xmodmap
+! Most X11 desktop environments auto-load ~/.Xmodmap on login.
+
+! AltGr + , key → < (was: U2022/bullet)
+keycode  59 = semicolon period comma less less multiply
+
+! AltGr + ; key → > (was: periodcentered)
+keycode  60 = colon slash period greater greater division
+
+! ² key → ~ (was: twosuperior)
+keycode  49 = asciitilde threesuperior grave asciitilde notsign asciitilde

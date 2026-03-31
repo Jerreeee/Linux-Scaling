@@ -113,8 +113,9 @@ get_app_lines | while IFS= read -r line; do
 
     # Patch all Exec= lines to go through scaled-launch
     # Match: Exec=/path/to/app or Exec=app-name
-    # Replace with: Exec=scaled-launch app-name
-    sed -i -E "s|^Exec=\S*${APP_NAME}\S*|Exec=scaled-launch ${APP_NAME}|" "$TARGET"
+    # Replace with: Exec=<full-path>/scaled-launch app-name
+    # Must use full path because GNOME's session PATH doesn't include ~/.local/bin/
+    sed -i -E "s|^Exec=\S*${APP_NAME}\S*|Exec=$HOME/.local/bin/scaled-launch ${APP_NAME}|" "$TARGET"
 
     echo "$TARGET" >> "$PATCHED_LIST"
     echo "PATCHED: $TARGET"
